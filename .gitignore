@@ -1,0 +1,6 @@
+node_modules
+src
+test
+misc
+.DS_Store
+eslintrc.json
