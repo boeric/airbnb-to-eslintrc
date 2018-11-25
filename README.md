@@ -1,7 +1,7 @@
 # airbnb-to-eslintrc
 Consolidates a Javascript style guide (for example the popular style guide provided by Airbnb) into a single **`eslintrc.json`** file with no references to 'extended' style guide files in `node_modules`.
 
-The main purpose is to prevent cluttering of dependencies of small projects. The `index.js` file will read a base `.eslintrc` or `eslintrc.json` file, and recursively load all `eslint` configuration files referred to by `extends` directives anywhere in the chain.
+The main purpose is to prevent cluttering of dependencies of small projects. The `index.js` file will read a base `.eslintrc` or `eslintrc.json` file, and recursively load all `eslint` configuration files referred to by `extends` directives anywhere in the chain. The resulting `eslintrc.json` file can be installed in the user's home directory and will automatically be used by `eslint` without having to install, for example `eslint-config-airbnb` (with dozens of further dependencies) in each project, large or small. 
 
 It is possible to obtain the current eslint configuration directly from `eslint`, by using the command `node_modules/eslint/bin/eslint.js --print-config .`. However, the rules gathered by using this command includes **all** rules found in **all** configuration files in the 'extends' chain, which includes rules that are used by various `eslint` plugins (regardless if those plugins are defined in the top level `.eslintrc` file or not). The `index.js` file in this project, on the other hand, only includes those rules that are used by those plugins defined in the top level `eslintrc` file, and those rules that are not used by any plugins.
 
